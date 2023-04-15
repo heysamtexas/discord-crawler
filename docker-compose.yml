@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+
+  refresh_guilds:
+    image: discord_crawler
+    restart: unless-stopped
+    container_name: discord_guilds
+    networks:
+      - database
+    env_file:
+      - .env-prod
+    command: python refresh_guilds.py
+
+  refresh_channels:
+    image: discord_crawler
+    restart: unless-stopped
+    container_name: discord_channels
+    networks:
+      - database
+    env_file:
+      - .env-prod
+    command: python refresh_channels.py
+
+  message_history:
+    image: discord_crawler
+    restart: unless-stopped
+    container_name: discord_messages
+    networks:
+      - database
+    env_file:
+      - .env-prod
+    command: python message_history.py
+
+networks:
+  database:
+    external: true

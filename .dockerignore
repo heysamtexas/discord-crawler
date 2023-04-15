@@ -1,0 +1,9 @@
+venv/
+.idea/
+Makefile
+README.md
+.env
+.env-prod
+discord_crawler/playground/
+docker-compose.yml
+playground/*
