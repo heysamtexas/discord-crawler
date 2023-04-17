@@ -18,8 +18,33 @@ can set these values in the `.env` file:
 
 # Developer Requirements
   - python 3.8 or greater
-  - dbmate for database migrations
+  - `dbmate` for database migrations https://github.com/amacneil/dbmate
   - Postgresql Server
+  - `pg_dump` (get it via `brew install libpq`) 
+
+# Getting started
+  1. Copy `env.sample` to `.evn` in the root folder.
+  2. Set the `DATABASE_URL` to the new database
+  3. run `dbmate up`. This will create the database and run all migrations to the current.
+  4. Done.
+
+## How do we get started?
+
+You will need to setup your worn Discord account in order to run a "selfbot".
+This page describes it better than I can here:
+
+  - https://github.com/megadrive/discord-selfbot/blob/master/GettingYourUserToken.md
+
+Once you obtain the token, insert that into the `selfbot` table:
+
+```
+INSERT INTO selfbot (username, email, token) values ('my_username', 'email@domain.com', $TOKEN);
+
+``
+
+Congratsulations, you have your first selfbot ready to roll.
+
+
 
 # Services to run
   - `always_online`: Keep self-bots online and your session tokens fresh.
